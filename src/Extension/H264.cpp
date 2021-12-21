@@ -179,10 +179,12 @@ bool H264Track::inputFrame_l(const Frame::Ptr &frame){
     switch (type) {
         case H264Frame::NAL_SPS: {
             _sps = string(frame->data() + frame->prefixSize(), frame->size() - frame->prefixSize());
+             VideoTrack::inputFrame(frame);
             break;
         }
         case H264Frame::NAL_PPS: {
             _pps = string(frame->data() + frame->prefixSize(), frame->size() - frame->prefixSize());
+            VideoTrack::inputFrame(frame);
             break;
         }
         case H264Frame::NAL_AUD: {

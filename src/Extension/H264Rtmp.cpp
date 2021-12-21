@@ -90,8 +90,8 @@ void H264RtmpDecoder::inputRtmp(const RtmpPacket::Ptr &pkt) {
         //缓存sps pps，后续插入到I帧之前
         _sps = getH264SPS(*pkt);
         _pps  = getH264PPS(*pkt);
-        onGetH264(_sps.data(), _sps.size(), pkt->time_stamp , pkt->time_stamp);
-        onGetH264(_pps.data(), _pps.size(), pkt->time_stamp , pkt->time_stamp);
+        //onGetH264(_sps.data(), _sps.size(), pkt->time_stamp , pkt->time_stamp);
+        //onGetH264(_pps.data(), _pps.size(), pkt->time_stamp , pkt->time_stamp);
         return;
     }
 
@@ -109,6 +109,7 @@ void H264RtmpDecoder::inputRtmp(const RtmpPacket::Ptr &pkt) {
             if (frame_len + offset > total_len) {
                 break;
             }
+            //InfoL<<"nal : "<<H264_TYPE(pkt->buffer.data()[offset]);
             onGetH264(pkt->buffer.data() + offset, frame_len, pkt->time_stamp, pts);
             offset += frame_len;
         }

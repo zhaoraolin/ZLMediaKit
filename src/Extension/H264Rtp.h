@@ -15,6 +15,7 @@
 #include "Util/ResourcePool.h"
 #include "Extension/H264.h"
 #include "Common/Stamp.h"
+#include <list>
 using namespace toolkit;
 
 namespace mediakit{
@@ -95,7 +96,7 @@ private:
 
 private:
     Frame::Ptr _sps;
-    Frame::Ptr _pps;
+    std::list<Frame::Ptr> _ppss;
     Frame::Ptr _last_frame;
 };
 
