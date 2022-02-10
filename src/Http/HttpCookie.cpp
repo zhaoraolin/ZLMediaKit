@@ -13,7 +13,7 @@
 #include "Util/logger.h"
 
 #if defined(_WIN32)
-#include "Util/strptime_win.h"
+extern char *strptime(const char *buf, const char *fmt, struct tm *tm);
 #endif
 
 using namespace toolkit;
